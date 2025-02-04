@@ -1,0 +1,50 @@
+/*Dada  la  siguiente  secuencia  de  instrucciones  indique  que  es  lo  que  
+ocurre  en  cada  línea.  Indique  si  queda  algún espacio de memoria por liberar.*/
+
+class Nodo { 
+  public: 
+    int Info; 
+    Nodo *prox; 
+};
+
+Nodo *P, *Q; //Se declaran P y Q como dos punteros a nodos
+int *E; //Se declara E como un puntero a enteros
+int I; //Se declara I como una variable entera
+int **F; //Se declara F como un puntero a punteros de enteros
+ 
+int main ( ) { 
+    P = new Nodo ( ); //Se le asigna a P la direccion de un nodo creado de forma dinamica
+    E = new int ( ); //Se le asigna a E la direccion de un entero creado de forma dinamica
+    *E = 0; //Se almacena el valor 0 en la direccion apuntada por E
+    F = &E; //Se le asigna a F la direccion del puntero E
+    P-> prox = new Nodo ( ); //Un nuevo nodo creado de forma dinamica se convierte en el nodo proximo al nodo apuntado por p
+    Q = &(*P); //Se le asigna a Q la direccion del nodo al que esta apuntando P (equivalentre a la instruccion Q = P)
+    P = P->prox; //P pasa a apuntar al nodo siguiente al nodo al que solia apuntar y al que ahora apunta Q 
+    Q->Info = 30; //La informacion en el nodo al que apunta Q pasa a ser 30
+    (*P). Info = Q->Info + 10; //La informacion en el nodo al que apunta P pasa a ser 40
+    P->prox = new Nodo( ); //Un nuevo nodo creado de forma dinamica se convierte en el nodo proximo al nodo apuntado por p
+    P->prox->Info = Q->Info + P->Info + 10; //La info en el nodo siguiente al que apunta P pasa a ser 80
+    P = (*P).prox; //P pasa a apuntar al nodo siguiente al que apuntaba previamente
+    P->prox = NULL; //Se le asigna una direccion nula como siguiente nodo al nodo que apunta P
+    while ( Q !=  NULL ) { //Mientras que Q no apunte a una direccion nula
+        *E = **F + Q->Info; //Se le asigna a la direccion de memoria almacenada en E, la suma de lo que haya en esa misma direccion de memoria y en la info del nodo al que este apuntando Q
+        Q = Q->prox; //Q pasa a apuntar al nodo siguiente del que estaba apuntando previamente
+    }  
+    F = new int* ( ); //Se le asigna a F un nuevo puntero a enteros creado con memoria dinamica
+    *F = new int ( ); //Se le asigna a la direccion a la que apunte el puntero al que apunta F un nuevo entero creado de forma dinamica
+    **F = 1; //Se cambia lo que hay en la direccion de memoria a la que apunta el puntero al que apunta F por un 1
+    delete *F; //Se borra el puntero al que apuntaba F
+    *F = &I; //F pasa a apuntar a la direccion de memoria donde se almacena el entero I
+    I=5; //Se le asigna 5 a I
+    std::cout << **F  <<  std::endl; //Se imprime lo que haya en la direccion de memoria a la que apunta el puntero al que apunta F
+
+    /*No se libero el espacio correspondiente a:
+        -El nodo dinamico creado en la linea 19
+        -El entero dinamico creado en la linea 20
+        -El nodo dinamico creado en la linea 23
+        -El nodo dinamico creado en la linea 28
+        -El entero dinamico creado en la linea 37
+    */
+   
+    return 0; 
+}
