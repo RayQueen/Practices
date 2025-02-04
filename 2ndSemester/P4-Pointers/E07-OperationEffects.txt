@@ -1,0 +1,24 @@
+Considere las siguientes declaraciones: 
+  int *X, *Y, *Z; 
+  char *W; 
+  int A; 
+  char B; 
+  bool C; 
+
+Indique el efecto de las siguientes operaciones: 
+  ▪  X = new int ( );   Asigna a X un entero dinamico
+  ▪  Y = new int ( );   Asigna a Y un entero dinamico
+  ▪  W = new char ( );  Asigna a Z un caracter dinamico
+  ▪  X= Y;              Iguala X a la direccion contenida en Y
+  ▪  B = *W;            Iguala B al caracter equivalente a lo que haya en la direccion contenida por W
+  ▪  Z = new int ( );   Asigna a Z un entero dinamico
+  ▪  Z = W;             Asigna a Z el equivalente entero a la direccion almacenada en W
+  ▪  C= W == Z;         Asigna 1 a C al W y Z tener el mismo valor almacenado
+  ▪  X = new int ( )    Asigna a X un nuevo entero dinamico
+  ▪  *X = 1;            Iguala lo que haya en la direccion contenida en X a 1
+  ▪  *W = ‘G’;          Iguala lo que haya en la direccion contenida en W a 'G'
+  ▪  A = *X + *Y;       Asigna a A la suma de lo que haya en la direccion contenida en X con lo que haya en la direccion contenida en Y
+  ▪  C = ( *W == A );   Asigna a C 0 o 1 dependiendo si lo que hay en A es el equivalente entero al caracter 'G'
+  ▪  *Z = A;            Asigna a la direccion de memoria contenida en Z lo que hay en A
+  ▪  Z= X;              Iguala Z a la direccion contenida en X
+  ▪  delete Y;          Elimina el puntero Y
