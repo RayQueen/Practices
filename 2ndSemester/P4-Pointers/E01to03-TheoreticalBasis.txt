@@ -1,0 +1,15 @@
+1. ¿Qué es el tipo de dato referencia o apuntador? 
+    - Un tipo de dato que almacena una dirección en memoria.
+
+2. Describa el uso que se le da en este contexto a los operadores “&, *” 
+    - El operador "&" en este caso puesto frente a cualquier variable estándar
+    es usado para obtener la dirección en memoria de dicha variable. Y por su parte el
+    operador "*" puesto frente de un tipo de dato apuntador puede ser usado en dos contextos,
+    al declarar el dato puede ser colocado frente al tipo de dato y antes del nombre de la
+    variable para indicar que se trata de un apuntados y luego de su declaración puede ser
+    usado frente al nombre de la variable para acceder a la dirección de memoria que almacene
+    ya sea para modificarla o acceder a su contenido en general.
+ 
+3. ¿Es posible tener apuntadores de apuntadores y anidarlos cuantas veces sea necesario?
+    - Si es posible, puedes tener un apuntador que apunte a otro apuntador y así sucesivamente
+    todas las veces que sea necesario.
