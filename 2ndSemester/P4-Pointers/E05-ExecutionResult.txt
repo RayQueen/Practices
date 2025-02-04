@@ -1,0 +1,59 @@
+Dada las siguientes definiciones: 
+
+  class Nodo { 
+   public: 
+        int N; 
+        Nodo *prox; 
+    } 
+    Nodo *q, *r, *s; 
+    Nodo t; 
+
+Asuma como estado inicial la figura que a continuación se muestra, e indique el estado final 
+después de ejecutar cada una de las siguientes instrucciones independientemente y luego una 
+tras otra secuencialmente. 
+
+    q = q->prox             s->prox= s 
+    *q  = *(q->prox)        t = *q 
+    q->prox                 *q = *s 
+    q ->prox->prox          *s = t 
+    q = r->prox             q = t 
+    *q = *(*r.prox)         (*r).prox =q 
+    s->prox = q->prox       q= q->prox->prox->prox
+
+                        q               r               s
+                        │               │               │
+                        v               v               v                                t
+    |   1   |   ┌──>|   2   |   ┌──>|   3   |   ┌──>|   4   |   ┌──>|   5   |       |       |
+    |   ────┼───┘   |   ────┼───┘   |   ────┼───┘   |   ────┼───┘   |       |       |       |
+
+Instrucciones independientes:
+    q = q->prox             q pasa a estar apuntando al mismo nodo que r
+    s->prox= s              el nodo señalado por s pasa a tenerse a si mismo como próxima dirección
+    *q  = *(q->prox)        el nodo señalado por p se vuelve identico a su anterior próximo nodo
+    t = *q                  el nodo t pasa a ser identico al nodo señalado por q
+    q->prox                 se accede a la dirección del nodo siguiente al nodo señalado por q
+    *q = *s                 el nodo señalado por q pasa a ser una copia señalado por s
+    q ->prox->prox          se accede al nodo próximo del nodo próximo señalado por q
+    *s = t                  el nodo señalado por s pasa a ser una copia del nodo t
+    q = r->prox             q pasa a apuntar al nodo próximo al nodo señalado por r
+    q = t                   q pasa a apuntar al nodo t
+    *q = *(*r.prox)         el nodo señalado por q pasa a ser igual al nodo próximo al nodo señalado por r
+    (*r).prox =q            el nodo señalado por q pasa a ser el nodo próximo al nodo señalado por r
+    s->prox = q->prox       el nodo próximo a q pasa a ser tambien el nodo próximo a s
+    q=q->prox->prox->prox   q pasa a apuntar al nodo próximo al próximo al próximo a el nodo anteriormente señalado por q
+
+Instrucciones continuas:
+    q = q->prox 
+    s->prox= s 
+    *q  = *(q->prox)  
+    t = *q 
+    q->prox 
+    *q = *s 
+    q ->prox->prox 
+    *s = t 
+    q = r->prox 
+    q = t 
+    *q = *(*r.prox)  
+    (*r).prox =q 
+    s->prox = q->prox 
+    q=q->prox->prox->prox
