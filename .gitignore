@@ -1,1 +1,7 @@
 .env
+
+# Ignores .json directory
+.vscode/*
+
+# Ignores executables
+**/*.exe
