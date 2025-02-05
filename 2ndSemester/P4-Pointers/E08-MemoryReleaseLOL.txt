@@ -1,0 +1,31 @@
+Dada  la  siguiente  secuencia  de  instrucciones  indique  que  ocurre  en  cada  línea.  
+Indique  además  si  queda  algún elemento por liberar de memoria al terminar LOL( ). 
+
+class Nodo { 
+    public: 
+        int Info; 
+        Nodo *prox; 
+} 
+Nodo *P, *Q; 
+ 
+void LOL( ) { 
+    P = new Nodo ( ); //Se le asigna a P la direccion de un nodo dinamico
+    P->Info = 10; //Se iguala a 10 la info del nodo al que apunta P
+    P->prox = P; //Se coloca la direccion almacenada en P como proximo nodo al nodo al que apunta
+    Q = new Nodo ( ); //Se le asigna a Q ls direccion de un nodo dinamico
+    P->prox = Q; //Se coloca Q como siguiente nodo al nodo al que apunta P
+    Q->Info = P->Info + 3; //Se iguala a 13 la info del nodo al que apunta Q 
+    Q->prox = P; //Se coloca P como siguiente nodo al nodo que apunta Q
+    Q->prox = NULL; //Se coloca como direccion nula el nodo siguiente a Q
+    Q = new Nodo ( ); //Se le asigna la direccion de un nuevo nodo dinamico a Q
+    Q->Info = P->Info + P->prox->Info; //Se le asigna a la info del nuevo nodo 23
+    P->prox->prox = Q; //Se le coloca Q como siguiente nodo al nodo al que anteriormente estaba apuntando Q
+    Q->prox = NULL; //Se le coloca como direccion nula el nodo siguiente a Q
+    Q = P; //Se iguala Q a la direccion a la que apunta P
+    while ( Q != NULL ) { //Mientras Q no sea una direccion nula
+        std::cout  << Q->Info << std::endl; //Imprimir la informacion en los nodos
+        Q = Q->prox; //Hacer que Q apunte al siguiente nodo
+    } 
+}
+
+Falta por liberar la memoria de los 3 nodos dinamicos que se crearon

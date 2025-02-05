@@ -1,0 +1,29 @@
+Haga la traza del siguiente algoritmo y explique que sucede en cada instrucción. 
+
+int main ( ) { 
+    int i, j, n; //Declaracion de variables enteras
+    int *arr; //Declaracion de un puntero a entero
+    int **mat; //Declaracion de un puntero a puntero de entero
+    std::cin >> n; //Introduccion por terminal del valor de n
+    arr = new int [n]; //Se le da al puntero la primera direccion de un arreglo dinamico de enteros con n posiciones
+    mat = new int *[n]; //Se le da al puntero la primera direccion de un arreglo dinamico de punteros con n posiciones
+    for ( i=0; i < n -1; i++ ) { //Ciclo for que va desde 0 hasta n-2 
+        arr[i] =  i; //Se rellena la posicion i del arreglo con el mismo i
+        mat[i] = new int[n]; //Se le asigna a la posicion i del arreglo de punteros un arreglo de enteros con n posicion
+        for ( j=0; j < n -1; j++) { //Ciclo for que va desde 0 hasta n-2 
+            mat[i][j] = i + j; //Se le asigna a la posicion i j de la matriz la suma de i y j
+        } 
+    } 
+    i = n – 1; //Se le asigna a i la ultima posicion del arreglo 
+    while ( i>=0 ) { //Mientras i sea mayor o igual a 0
+        std::cout << arr[i] << std::endl; //Se imprime el contenido del arreglo en esa posicion
+        delete []mat[i]; //Se elimina el arreglo asociado al puntero en la posicion i del arreglo de punteros
+        i = i - 1; //Se le resta 1 a i
+    }  
+    delete []arr; //Se elimina el arreglo asociado al puntero en arr
+    delete []mat; //Se elimina el arreglo de punteros asociado al puntero de punteros en mat
+    // en este momento, ¿a quién apunta arr?. ¿Podría acceder arr[1]? 
+    // No se podria acceder arr[1] ya que el arreglo ya fue liberado y arr estaria
+    // apuntando a una direccion invalida, se convierte en un dangling pointer
+    areturn 0; 
+}
