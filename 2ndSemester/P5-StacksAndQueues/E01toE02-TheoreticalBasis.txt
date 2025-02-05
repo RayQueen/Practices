@@ -1,0 +1,23 @@
+1. ¿Es estrictamente necesario el uso de apuntadores para implementar listas?
+    -Aunque no es estrictamente necesario usar punteros para implementar listas, 
+    son una herramienta muy útil y común en la implementación de listas enlazadas 
+    y otras estructuras de datos. En lenguajes de alto nivel, el uso de referencias 
+    puede ocultar la complejidad de los punteros, pero el concepto de enlazar 
+    elementos sigue siendo fundamental.
+
+2. Describa, en general, las ventajas y desventajas del uso de listas con apuntadores 
+con respecto al uso de arreglos.
+    Ventajas:
+        -Tienen un tamaño dinamico, es decir, su tamaño puede crecer o reducirse en
+        base a lo necesario sin tener que establecer un limite concreto
+        -Las operaciones de insercion y eliminacion en posiciones otras que los extremos
+        resultan mucho mas faciles de implementar que con otras estructuras como arreglos
+        -No requieren de posiciones contiguas de memoria, haciendolas mucho mas flexibles
+        que los arreglos en cuanto a memoria
+    
+    Desventajas:
+        -Las listas a pesar de ser flexibles en cuanto a memoria requieren mas de esta
+        para poder almacenar los punteros que las conectan, en lugar de unicamente los datos
+        -El acceso a elementos en la lista es secuencial, haciendo que las operaciones de
+        busqueda tengan mas complejidad que en una estructura habitual
+        -Son complicadas de implementar en general
