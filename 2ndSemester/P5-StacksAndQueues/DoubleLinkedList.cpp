@@ -16,12 +16,13 @@ class DLList{ //Simple linked list
     private:
     Node<T>* head;
     Node<T>* tail;
+    int counter;
 
     public:
-    DLList(): head(nullptr), tail(nullptr) {} //Constructor por defecto
+    DLList(): head(nullptr), tail(nullptr), counter(0) {} //Constructor por defecto
 
     // Constructor de copia
-    DLList(const DLList& other) : head(nullptr), tail(nullptr) {
+    DLList(const DLList& other) : head(nullptr), tail(nullptr), counter(0) {
         Node<T>* current = other.head;
         while (current != nullptr) {
             postInsert(tail, current->payload);
@@ -30,11 +31,16 @@ class DLList{ //Simple linked list
     }
 
     ~DLList(){ //Destructor
-        while(!isEmpty()){
+        while(!isEmpty()&&counter>0){
             Node<T>* temp = head;
             head = head->next;
+            counter--;
             delete temp;
         }
+    }
+
+    int getCounter(){
+        return counter;
     }
 
     bool isEmpty(){ //La lista esta vacia?
@@ -65,10 +71,12 @@ class DLList{ //Simple linked list
         if(p->next!=nullptr) p->next->prev=p->prev;
         if(p==head) head=p->next;
         if(p==tail) tail=p->prev;
+        counter--;
         delete p;
     }
 
     void preInsert(Node<T>* p, T valid){
+        counter++;
         Node<T>* newNode = new Node<T>(valid);
         if(p==head) head=newNode;
         newNode->next=p;
@@ -78,6 +86,7 @@ class DLList{ //Simple linked list
     }
 
     void postInsert(Node<T>* p, T valid){
+        counter++;
         Node<T>* newNode = new Node<T>(valid);
         if(p==last()) tail=newNode;
         if(first()==nullptr) head=newNode;
@@ -94,10 +103,10 @@ template <typename T>
 void printList(DLList<T> &myList) {
     Node<T>* listIterator = myList.first();
     int nodeIndex = 1;
-    while (listIterator != nullptr) {
-        T retrievedData = *myList.get(listIterator);
-        std::cout << "Node " << nodeIndex << ": [" << retrievedData << "]" << std::endl;
+    int listCounter = myList.getCounter();
+    for(; nodeIndex <= listCounter; nodeIndex++) {
+        T retrievedData = myList.get(listIterator);
+        cout << "Node " << nodeIndex << ": [" << retrievedData << "]" << endl;
         myList.next(listIterator);
-        nodeIndex++;
     }
 };
