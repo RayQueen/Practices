@@ -5,3 +5,6 @@
 
 # Ignores executables
 **/*.exe
+
+# Ignores Example directory
+2ndSemester/Examples/*
