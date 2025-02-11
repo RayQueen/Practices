@@ -18,7 +18,16 @@ class DLList{ //Simple linked list
     Node<T>* tail;
 
     public:
-    DLList(): head(nullptr), tail(nullptr) {} //Constructor
+    DLList(): head(nullptr), tail(nullptr) {} //Constructor por defecto
+
+    // Constructor de copia
+    DLList(const DLList& other) : head(nullptr), tail(nullptr) {
+        Node<T>* current = other.head;
+        while (current != nullptr) {
+            postInsert(tail, current->payload);
+            current = current->next;
+        }
+    }
 
     ~DLList(){ //Destructor
         while(!isEmpty()){
