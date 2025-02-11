@@ -1,0 +1,7 @@
+4. Las  listas  enlazadas  son  por  definición  estructuras  de  datos  homogéneas  (es  decir,  todos  sus  nodos  almacenan 
+elementos  del  mismo  tipo  y  estructura).  ¿Es  esto  totalmente  cierto?,  es  decir,  ¿Sería  posible  tener  una  lista  que 
+almacenara elementos diferentes en cada uno de sus nodos (tanto en tipo como en estructura)? Justifique su respuesta 
+
+    - Aunque las listas enlazadas son comúnmente implementadas como estructuras homogéneas, es totalmente posible crear listas 
+    enlazadas heterogéneas que almacenen elementos de diferentes tipos y estructuras. Esto se puede lograr mediante el uso de 
+    punteros a una clase base.
