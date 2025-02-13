@@ -105,7 +105,7 @@ void printList(DLList<T> &myList) {
     int nodeIndex = 1;
     int listCounter = myList.getCounter();
     for(; nodeIndex <= listCounter; nodeIndex++) {
-        T retrievedData = myList.get(listIterator);
+        T retrievedData = *(myList.get(listIterator));
         cout << "Node " << nodeIndex << ": [" << retrievedData << "]" << endl;
         myList.next(listIterator);
     }
