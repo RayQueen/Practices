@@ -35,6 +35,10 @@ class SLList{ //Simple linked list
         return counter;
     }
 
+    void changeHead(Node<T>* newHead){
+        this->head=newHead;
+    }
+
     Node<T>* first(){return head;}
     Node<T>* last(){return nullptr;}
 
@@ -92,4 +96,5 @@ void printList(SLList<T> &myList) {
         cout << "Node " << nodeIndex << ": [" << retrievedData << "]" << endl;
         myList.next(listIterator);
     }
+    cout<<endl;
 };
