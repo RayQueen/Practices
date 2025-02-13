@@ -3,30 +3,47 @@
 using namespace std;
 
 template <typename T>
-class Stack: DLList<T>{
+class Stack: private DLList<T>{
     public:
-    Stack(): DLList::DLList() {};
+    Stack(): DLList<T>::DLList<T>() {};
 
     bool isEmpty(){
-        return DLList::isEmpty();
+        return DLList<T>::isEmpty();
     }
 
     int getCounter(){
-        return DLList::getCounter();
+        return DLList<T>::getCounter();
     }
 
     void push(T valid){
-        DLList::preInsert(DLList::first(), valid);
+        DLList<T>::preInsert(DLList<T>::first(), valid);
     }
 
     T* first(){
         if(this->isEmpty()) return nullptr;
-        return &(first())->payload;
+        return &(DLList<T>::first()->payload);
     }
 
-    T* pop(){
-        T* x=this->first();
-        DLList::remove(DLList::first());
+    T pop(){
+        T x=DLList<T>::first()->payload;
+        DLList<T>::remove(DLList<T>::first());
         return x;
     }
+
+    void printStack() {
+        Node<T>* listIterator = DLList<T>::first();
+        int nodeIndex = 1;
+        int listCounter = DLList<T>::getCounter();
+        if(listCounter==0){
+            cout<<"Empty List."<<endl;
+            return;
+        }
+        for(; nodeIndex <= listCounter; nodeIndex++) {
+            T retrievedData = *(DLList<T>::get(listIterator));
+            cout << "Node " << nodeIndex << ": [" << retrievedData << "]" << endl;
+            DLList<T>::next(listIterator);
+        }
+        cout<<endl;
+    }
 };
+
