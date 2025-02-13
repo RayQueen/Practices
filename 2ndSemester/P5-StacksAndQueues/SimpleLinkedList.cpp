@@ -14,9 +14,10 @@ template <typename T>
 class SLList{ //Simple linked list
     private:
     Node<T>* head;
+    int counter;
 
     public:
-    SLList(): head(nullptr) {} //Constructor
+    SLList(): head(nullptr), counter(0) {} //Constructor
 
     ~SLList(){ //Destructor
         while(!isEmpty()){
@@ -30,6 +31,10 @@ class SLList{ //Simple linked list
         return(head==nullptr);
     }
 
+    int getCounter(){
+        return counter;
+    }
+
     Node<T>* first(){return head;}
     Node<T>* last(){return nullptr;}
 
@@ -39,7 +44,7 @@ class SLList{ //Simple linked list
     }
 
     void next(Node<T>* &p){
-        if(p==nullptr) return nullptr;
+        if(p==nullptr) return;
         p=p->next;
     }
 
@@ -55,7 +60,8 @@ class SLList{ //Simple linked list
     void insert(Node<T>* p, T valid){
         Node<T>* newNode = new Node<T>(valid);
         newNode->next=p;
-        if(p==first()||isEmpty){
+        counter++;
+        if(p==first()||isEmpty()){
             head=newNode;
             return;
         }
@@ -66,6 +72,7 @@ class SLList{ //Simple linked list
     void remove(Node<T>* p){
         Node<T>* prev = findPrev(p);
         prev->next=p->next;
+        counter--;
         delete p;
     }
 };
@@ -73,12 +80,16 @@ class SLList{ //Simple linked list
 // Print the contents of the list
 template <typename T>
 void printList(SLList<T> &myList) {
-    typename SLList<T>::iterator listIterator = myList.first();
+    Node<T>* listIterator = myList.first();
     int nodeIndex = 1;
-    while (listIterator != nullptr) {
-        T retrievedData = *myList.get(listIterator);
-        std::cout << "Node " << nodeIndex << ": [" << retrievedData << "]" << std::endl;
+    int listCounter = myList.getCounter();
+    if(listCounter==0){
+        cout<<"Empty List."<<endl;
+        return;
+    }
+    for(; nodeIndex <= listCounter; nodeIndex++) {
+        T retrievedData = *(myList.get(listIterator));
+        cout << "Node " << nodeIndex << ": [" << retrievedData << "]" << endl;
         myList.next(listIterator);
-        nodeIndex++;
     }
 };
