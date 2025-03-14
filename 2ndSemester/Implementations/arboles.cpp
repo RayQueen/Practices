@@ -79,7 +79,7 @@ class BTNode { //Binary tree node
     * Ya que el operador trabaja sobre un parametro, si queremos acceder a los atributos privados del objeto necesitamos hacer que el operador sea friend de la clase,
     * de lo contrario solo se podra utilizar los atributos y metodos publicos del objeto que se pasa por parametro
     */
-   friend ostream& operator<<(ostream& out, BinaryTreeNode &object) {
+   friend ostream& operator<<(ostream& out, BTNode<T> &object) {
        out << "BinaryNode Payload: " << object.value;
        
        out << " Left Child: ";
@@ -94,7 +94,7 @@ class BTNode { //Binary tree node
     }
 
     /* Se sobreescribe el operador para que funcione con punteros tambien */
-    friend ostream& operator<<(ostream& out, BinaryTreeNode* &object) {
+    friend ostream& operator<<(ostream& out, BTNode<T>* &object) {
         if (object == NULL) {
             out << "null";
             return out;
@@ -119,16 +119,16 @@ class BSTree { //Binary search tree
     public:
     BTNode<T>* root; //Raiz del arbol
     
-    SearchBinaryTree() { //Constructor
+    BSTree() { //Constructor
         root = NULL;
     }
     
     void insert(T value) {
-        insert(value, root);
+        return insert(value, root);
     }
     
     bool found(T value) {
-        found(value, root);
+        return found(value, root);
     }
     
     private:

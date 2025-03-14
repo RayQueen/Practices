@@ -98,24 +98,6 @@ class DLList{ //Simple linked list
     }
 };
 
-template <typename T>
-class List: public DLList<T> {
-    public:
-    
-    List(){
-        DLList<T>::DLList();
-    } 
-
-    List(const DLList& other){
-        DLList<T>::DLList(other);
-    } 
-
-    ~List(){
-        DLList<T>::~DLList();
-    }
-
-};
-
 // Print the contents of the list
 template <typename T>
 void printList(DLList<T> &myList) {
